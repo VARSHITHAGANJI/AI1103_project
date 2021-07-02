@@ -1,0 +1,296 @@
+\documentclass[10pt]{beamer}
+\usepackage{listings}
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{url}
+
+
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usepackage{tkz-fct}
+\usepackage{mathrsfs}
+\usepackage{txfonts}
+\usepackage{tkz-euclide} 
+\usetikzlibrary{calc,math}
+\usepackage{float}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+
+
+
+
+
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\usepackage[export]{adjustbox}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usetheme{Boadilla}
+\title{\textbf{Project Presentation - AI1103}}
+\author{GANJI VARSHITHA\\ AI20BTECH11009}
+\date{}
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+\section{}
+\begin{frame}{Improving Error Probability Performance of Digital
+Communication Systems with Compact Nyquist Pulses }
+\begin{block}{Authors}
+\begin{itemize}
+\item Uche A.K Chude Okonkwo
+\item B.T Maharaj
+\item Reza Malekian
+\end{itemize}
+All are from Department of Electrical, Electronic and Computer Engineering University Of Pretoria, South Africa.
+\end{block}
+\begin{block}{Date of Conference}
+18-20 August 2019
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Abstract}
+\begin{itemize}
+\item Designing pulse shaping filters that satisfy the
+Nyquist condition for minimum intersymbol interference (ISI) is
+crucial to the performance of almost all digital transceiver
+systems. 
+
+
+\item A method of improving the error probability performance of various Nyquist pulses, by multiplying them with a specific compactly supported function, is proposed.
+
+
+\item The resultant pulses are less sensitive to timing error and with smaller maximum distortion than the original pulses.
+
+
+
+
+\end{itemize}
+\end{block}
+
+
+\end{frame}
+\begin{frame}{Prerequisites}
+\begin{block}{Nyquist Pulses}
+The pulses which satisfy Nyquist ISI criterion which results in no intersymbol interference or ISI.\\
+Let h(t) denote channel impulse response, then the condition for ISI free response is given by
+ \begin{align}
+ h(nT_{s})= \left\{
+  \begin{array}{lr} 
+      1; & n=0 \\
+      0; & n\neq 0 
+      \end{array}
+\right.
+\end{align}
+for all integers n and $T_{s}$ is the symbol period.\\
+Examples are sinc pulse, raised cosine pulses, etc. 
+\end{block}
+\begin{block}{Compactly Supported Functions}
+Functions with compact support on a topological space X are those whose closed support is a compact subset of X.
+\\In other words, compactly supported function is zero outside of the compact set.
+
+\end{block}
+\end{frame}
+\begin{frame}{Prerequisites}
+\begin{block}{Eye Diagrams}
+Eye diagrams are successful way of quickly and intuitively assessing the quality of a digital signal. It visualises the probability of signal being at each possible voltage across the symbol duration time.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{eyepattern}
+    \caption{Typical Eye diagram with measurementss}
+\end{figure}
+
+\end{block}
+ 
+%\begin{figure}
+   
+%\end{figure}
+\end{frame}
+\begin{frame}{PROBLEM}
+\begin{itemize}
+
+
+\item The transceiver processes the received data on a sample by sample basis, resulting in timing error. \\
+\item The effect of the timing error is exacerbated by the intersymbol
+interference (ISI) phenomenon, which arises due to the bandlimited nature of the channel.\\
+\item Hence, we need to combat arising error probability due to combine effects of timing error and ISI phenomenon by designing pulse shaping filters that minimize the effects of ISI as well as noise.
+\end{itemize}
+\end{frame}
+\begin{frame}{Approaches}
+\begin{block}
+
+
+Consider a baseband pulse amplitude modulation (PAM) system given by
+\begin{align}
+x(t) ={}&\sum_{m=-\infty}^{\infty}d_{m}g(t-mT_{SYM}) + w(t)\\
+h(nT_{s})={}&
+\begin{cases}
+1; & t=0\\
+0; & t=\pm1,\pm2,\cdots.
+\end{cases}
+\end{align}
+where $T_{SYM}$ is the symbol duration, $d_{m}$ is the transmitted
+symbols at the rate $\frac{1}{T_{SYM}}$ , g(t) is the overall channel impulse response, and w(t) is the additive white Gaussian noise.
+\begin{itemize}
+\item These pulses are nyquist pulses. The most widely known ISI-free NP is the raised-cosine (rcos) pulse. Pulses like better than raised cosine(btrc)and fsech which have superior performance compared to rcos pulses have been proposed.
+\item To achieve low error probability without sacrificing bandwidth,  linear combination of two pulses is proposed.
+\end{itemize}
+%\end{figure}
+\end{block}  
+\end{frame}
+\begin{frame}{Different Approach}
+
+\begin{itemize}
+\item Traditional method of pulse design targets the frequency response of the pulse.
+\item A different approach is to target the impulse response function without having to compromise much bandwidth.
+\item Here, the linear multiplication of existing nyquist pulses with a compactly supported function is proposed, which results in a compactly supported Nyquist pulse whose bandwidth can be controlled by a factor termed the scaling parameter. 
+\end{itemize}
+
+\end{frame}
+\begin{frame}{Mathematical Definition}
+The expectation of ISI error probability $P_{e}$ for a Nyquist pulse is given by
+\begin{align}
+E[P_{e}]=\int P_{e}f_{e} \,d\epsilon
+\end{align}
+where $f_{e}$ is probability density function of the time
+error $\epsilon$.\\
+Considering the case of binary antipodal signaling an additive white guassian noise(AGWN), $P_{e}$ is evaluated as
+\begin{align}
+P_{e}= \frac{1}{2}-\frac{2}{\pi}\sum_{m=1,m=\text{odd}}^{M}\frac{exp(-m^{2}\omega^{2})sin(mg_{0})}{2}.\prod_{k=N_{1},k\neq 0}^{N_{2}}cos(m\omega g_{k}).
+\end{align}
+where 
+\begin{itemize}
+\item M represents the number of coefficients considered in the approximate Fourier series of noise complementary distribution
+\item $\omega=\frac{2\pi}{T_{f}}$ where $T_{f}$ is the period used in the series
+\item $N_{1}$ and $N_{2}$ represent the number of interfering symbols before and after the transmitted symbol
+\item $g_{k} = p_{N}(kT_{\text{SYM}} + \epsilon)$ is the sample version of g(t), where $p_{N}(t)$ is the pulse shape used and $T_{\text{SYM}}$ is the symbol duration.
+\end{itemize}
+
+\end{frame}
+\begin{frame}{Compactly Supported Nyquist Pulses}
+ \begin{block}{Definition}
+ Let $\mathit{U}$ be a non empty set in $\mathfrak{R}^{n}$ for some positive integer n, and let $C_{com}^{\infty}(\mathit{U})$ denote the space of compactly supported smooth functions on U. \\
+If for some pulse p(t) the partial derivatives exist for all possible orders defined on its domain, then the product of p(t) and some function $p_{C}(t) \in C_{com}^{\infty}(\mathit{U}) $
+such that
+\begin{align}
+p_{N}(t) = p(t)p_{C}(t)  
+\end{align}
+ 
+ \end{block}
+\end{frame}
+\begin{frame}{Frequency characteristics of $p_{N}(t)$}
+
+
+\begin{lemma}
+Let z(t), v(t) and h(t) be some functions whose Fourier transforms are 
+$Z(\omega)$, $V(\omega)$ and $H(\omega)$, respectively. \\
+If z(t) = v(t)h(t), where $B_{v} = supp\{V(\omega)\}$ and $B_{h} = supp\{H(\omega)\}$ are the frequency supports (bandwidths) of v(t) and h(t) respectively, then it is true that $B_{z} = supp\{Z(\omega)\}$  is such that
+\begin{align}
+B_{z} = B_{v} + B_{h}
+\end{align}
+
+\end{lemma}
+\begin{block}{Conclusion}
+If the bandwidth of $p_{C}(t)$ is much less than that of p(t), then
+that of $p_{N}(t)$ will approximately be equal to that of p(t), otherwise the bandwidth of $p_{N}(t)$ will always be greater than
+that of p(t). 
+
+\end{block}
+
+\end{frame}
+\begin{frame}{Proposed compactly supported Function}
+The pulse is defined as the following
+
+\begin{align}
+p_{C}(t)=(1-x_{1}(t))\sum_{k=0}^{\infty}-\left(\frac{0.5x_{2}(t)}{k!}\right)^{k}
+\end{align}
+where $x_{1}(t)= (\frac{t}{\Gamma})^{2} , 
+x_{2}(t)= (\frac{t}{\Gamma})^{2}$ and $\Gamma ,(\Gamma > 0)\in \mathfrak{R}$ is a
+scaling parameter that defines the bandwidth of $p_{C}(t)$.\\
+Reduced tail size is required to reduce peak to average power ratio.\\
+The scaling parameter defines how the tails of$p_{N}(t)$ taper off.\\
+For practical reasons, it is approximated as a continuous function expressed as
+\begin{align}
+p_{C}(t)=(1-x_{1}(t))\text{exp}(-x_{2}(t))
+\end{align}
+%\begin{figure}
+   
+%\end{figure}
+\end{frame}
+
+
+\begin{frame}
+\begin{block}{Time Characteristics}
+
+As $\Gamma$ decreases, the tails of $p_{N}(t)$ tend to zero more quickly resulting in less error probability.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{figure2}
+    \caption{Time domain characteristics of $p_{N}(t)$ for rcos at $\alpha = 0.35$}
+\end{figure}
+\end{block}
+\begin{block}{Frequency Characteristics}
+Negligible null to null bandwidth price paid off for tapering off the pulse tails.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{figure1}
+    \caption{Frequency domain characteristics of $p_{N}(t)$ for rcos at $\alpha = 0.35$.}
+\end{figure}
+
+\end{block} 
+\end{frame}
+
+\begin{frame}{Noise margin and Timing jitter}
+\begin{block}{}
+ The proposed pulse technique outperforms the respective conventional pulses with respect to noise margin.
+%\begin{figure}[h]
+   % \includegraphics[width=0.3\textwidth]{figure3}
+  %  \caption{Eye diagram for rcos pulse at $\alpha=0.35$} 
+%\end{figure}
+%\vspace{3cm}
+\begin{figure}[!htb]
+\minipage{0.32\textwidth}
+  \includegraphics[width=\linewidth]{figure3}
+ \caption{Eye diagram for rcos pulse at $\alpha=0.35$} 
+\endminipage\hfill
+\minipage{0.32\textwidth}
+  \includegraphics[width=\linewidth]{figure4}
+ \caption{Eye diagram for $p_{N}(t)$ of rcos pulse at $\alpha=0.35$ and $\Gamma=8$} \label{fig:awesome_image2}
+\endminipage\hfill
+\minipage{0.32\textwidth}%
+  \includegraphics[width=\linewidth]{figure5}
+  \caption{Eye diagram for $p_{N}(t)$ of btrc pulse at $\alpha=0.35$ and $\Gamma=4$} \label{fig:awesome_image3}
+\endminipage
+\end{figure}
+ 
+\end{block}
+
+
+\end{frame}
+\begin{frame}{Optimal choice of $\Gamma$}
+\begin{itemize}
+\item Depends on the application for which the pulse is used.
+\item To achieve a significantly lower error probability potential, the improved pulse technique with $\Gamma$ value that tends to unity is optimal.\\
+The probability achieved is obtained at the expense of a slight bandwidth increase.
+\item For systems in which bandwidth resources is scarce, high values of $\Gamma$ is better where there is no bandwidth compromise.
+\end{itemize}
+\end{frame}
+\begin{frame}{Summarizing}
+\begin{itemize}
+\item A method of improving the performance of various conventional Nyquist pulses has been proposed.
+\item The improved pulse is the product of a conventional function with a compactly supported smooth function.
+\item Simulation results show that the proposed pulse technique outperforms the conventional pulses in terms of error probability in the presence of timing jitter and noise margin.
+\end{itemize}
+\end{frame}
+
+\end{document}
